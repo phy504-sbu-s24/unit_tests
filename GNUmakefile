@@ -13,12 +13,17 @@ HEADERS := $(wildcard *.H)
 
 OBJECTS := $(SOURCES:.cpp=.o)
 
+CXXFLAGS :=
+ifeq (${DEBUG},TRUE)
+   CXXFLAGS += -Wall -Wextra -Werror -Wshadow -g
+endif
+
 # a recipe for making an object file from a .cpp file
 # Note: this makes every header file a dependency of every object file,
 # which is not ideal, but it is safe.
 
 %.o : %.cpp ${HEADERS}
-	g++ -c $<
+	g++ ${CXXFLAGS} -c $<
 
 # explicitly write the rule for linking together the executable
 
@@ -26,5 +31,5 @@ unit_test_vector2d: ${OBJECTS}
 	g++ -o $@ ${OBJECTS}
 
 testing: unit_test_vector2d
-	$(shell ./unit_test_vector2d)
-	@if [ ${.SHELLSTATUS} == 0 ]; then echo "all tests pass"; fi
+	./unit_test_vector2d
+	@if [ $$? -eq 0 ]; then echo "tests passed"; fi
