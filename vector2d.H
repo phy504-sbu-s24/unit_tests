@@ -48,7 +48,7 @@ public:
     Vector2d operator- (const Vector2d& vec) {
         Vector2d v_out;
         v_out.x = x - vec.x;
-        v_out.y = y - vec.y;
+        v_out.y = y - vec.x;
         return v_out;
     }
 
