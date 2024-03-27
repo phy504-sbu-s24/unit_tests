@@ -46,9 +46,7 @@ public:
     // subtract two vectors
 
     Vector2d operator- (const Vector2d& vec) {
-        Vector2d v_out;
-        v_out.x = x - vec.x;
-        v_out.y = y - vec.x;
+        Vector2d v_out(x - vec.x, y - vec.y);
         return v_out;
     }
 
