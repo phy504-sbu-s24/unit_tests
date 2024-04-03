@@ -8,7 +8,7 @@ int main() {
 
     // test addition
 
-    assert(v1 + v2 == Vector2d(1, 11));
+    assert(v1 + v2 == Vector2d(1, 12));
 
     // test subtraction
 
